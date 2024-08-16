@@ -1,0 +1,63 @@
+---
+title: "R Notebook_indexing"
+output: html_notebook
+---
+
+Using logical operators to index vectors
+logical operators
+
+<
+<=
+>
+==
+!=
+!(NOT)
+|(OR)
+&(AND)
+
+```{r}
+index<- murder_rate <= 0.71
+index
+```
+```{r}
+murders$state[index]
+```
+
+```{r}
+sum(index)
+```
+True turns into 1, false turns into 0.
+```{r}
+west_index<- murders$region=="West"
+safe_index<- murder_rate<1
+murders$state[safe_index&west_index]
+```
+## Indexing functions
+
+### which
+
+```{r}
+x<- c(FALSE, TRUE, FALSE, TRUE, TRUE, FALSE)
+which(x) #indices of x is true
+```
+```{r}
+index<- which(murders$state=="Massachusetts")
+index
+murder_rate[index]
+```
+### match
+```{r}
+index<- match(c("New York", "Florida", "Texas"), murders$state)
+murder_rate[index]
+```
+## %in%
+```{r}
+x<- c("a","b", "c", "d")
+y<- c("a", "e")
+y%in%x
+```
+
+```{r}
+str(murders)
+```
+

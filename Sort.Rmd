@@ -1,0 +1,51 @@
+---
+title: "Sorting"
+output: html_notebook
+---
+```{r}
+x<- c(31, 4, 15, 92, 65)
+sort(x)
+order(x) #index
+```
+
+```{r}
+# Load necessary library
+library(dslabs)
+
+# Load the murders dataset
+# data(murders)
+sort(murders$total)
+```
+```{r}
+murders$state[1:10]
+```
+```{r}
+index<- order(murders$total)
+murders$abb[index]
+```
+Note: The function order() returns the index vector needed to sort the vector.
+```{r}
+max(murders$total)
+max_index<- which.max(murders$total) #output is its index!!!
+max_index
+murders$state[max_index]
+```
+
+## Rank
+```{r}
+x<- c(31,4,15)
+rank(x)
+```
+In conclusion:
+1) sort, sort the numbers
+2) order, give index of sort result
+3) rank,largest(31), smallest(4)
+## Practice
+```{r}
+library(dslabs)
+data(murders) #load the dataset
+class(murders)
+str(murders)
+
+```
+

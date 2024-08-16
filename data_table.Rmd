@@ -1,0 +1,27 @@
+---
+title: "data.table(package)"
+output: html_notebook
+---
+select
+```{r}
+library(dslabs)
+library(data.table)
+data(murders)
+murders <- setDT(murders)
+murders[, c("state", "region")] |> head()
+```
+## dplyr
+```{r}
+library(dplyr)
+murders<- mutate(murders, rate=total/population*100000)
+```
+## Data table
+```{r}
+murders[, rate:= total/population*100000]
+head(murders)
+```
+```{r}
+murders[,":="(rate=total / population* 100000, rank=rank(population))]
+head(murders)
+```
+The data.table package is designed to avoid wasting memory.

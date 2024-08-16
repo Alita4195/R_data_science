@@ -1,0 +1,104 @@
+---
+title: "dplyr"
+output: html_notebook
+---
+
+working with tables
+1) Mutate
+```{r}
+library(dplyr)
+murders<- mutate(murders, rate=total/population*100000)
+str(murders)
+```
+```{r}
+filter(murders, rate<=0.71)
+```
+2) Select
+```{r}
+new_data_table <- select(murders, state, region, rate) #smaller data table
+filter(new_data_table, rate<= 0.71)
+```
+## Pipe
+```{r}
+murders %>% select(state, region, rate) %>% filter(rate<=0.71)
+```
+```{r}
+grades<- data.frame(names = c("John", "Meggie", "Frank"), math = c(60, 65, 50), English = c(68, 98, 99))
+grades
+class(grades$names)
+```
+3) Select
+```{r}
+mutate(murders, rate =  total / population * 100000, rank = (-rate)) %>% select(state, rate, rank)
+```
+
+## Practice
+```{r}
+# Use filter to create a new data frame no_south
+no_south<- filter(murders, !murders$region=="South")
+# Use nrow() to calculate the number of rows
+nrow(no_south)
+```
+4) Summarize'
+## The summarize function
+```{r}
+library(tidyverse)
+library(dplyr)
+s<- filter(murders, region=="West") %>% summarize(minimum = min(rate), median=median(rate), maximum=max(rate))
+str(s)
+s %>% pull(minimum) #pull function to access the columns
+s %>% .$maximum # . THE DOT PLACEHOLDER
+```
+5) quantile
+```{r}
+library(dplyr)
+str(murders)
+murders %>% summarize(range=quantile(rate, c(0, 0.5, 1)))
+#The quantile() function can be used to return the min, median, and max in a single line of code
+```
+
+6)group_by() 
+```{r}
+murders%>% group_by(region) %>% summarize(median= median(rate)) # by followed by summarize us the most used operation in data analysis
+```
+
+
+```{r}
+murders%>% arrange(desc(rate))%>% head() #order according to one variable
+```
+
+```{r}
+murders %>% arrange(region, desc(rate)) %>% head() #order region, within region, order by murder rate
+```
+
+```{r}
+head(murders)
+murders%>% top_n(10, rate)#top 10, but not ranked
+murders%>% arrange(desc(rate)) %>% top_n(10)
+```
+
+## Practice 
+```{r}
+library(dplyr)
+library(NHANES)
+data(NHANES)
+NHANES %>% filter(Gender=="male")%>% group_by(AgeDecade) %>% summarize(average=mean(BPSysAve, na.rm=TRUE), standard_deviation=sd(BPSysAve, na.rm=TRUE)) 
+```
+
+```{r}
+library(NHANES)
+data(NHANES)
+NHANES%>% group_by(AgeDecade, Gender)%>% summarize(average=mean(BPSysAve, na.rm=TRUE), standard_deviation=sd(BPSysAve, na.rm=TRUE)) 
+```
+Note: group_by can take more than one variable.
+```{r}
+library(dplyr)
+library(NHANES)
+data(NHANES)
+NHANES %>%
+      filter(Gender == "male" & AgeDecade==" 40-49") %>%
+      group_by(Race1) %>%
+      summarize(average = mean(BPSysAve, na.rm = TRUE), 
+                standard_deviation = sd(BPSysAve, na.rm=TRUE)) %>%
+      arrange(average)
+```

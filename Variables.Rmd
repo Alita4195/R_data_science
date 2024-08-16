@@ -1,0 +1,87 @@
+---
+title: "R Notebook"
+output: html_notebook
+---
+## varibles types
+```{r}
+a<- 2
+class(a)
+```
+```{r}
+class(ls)
+```
+## Data Frames (Tables)
+```{r}
+install.packages("dslabs")
+library(dslabs)
+data("murders") #the data is stored in the object murders
+```
+
+```{r}
+class(murders) 
+```
+```{r}
+str(murders) 
+```
+Note: 51 observations, means 51 rows and 5 variables: state, abb(abbreviation), region, population, total
+```{r}
+head(murders)
+```
+$- called the Accessor
+
+```{r}
+murders$population
+```
+51 Vectors
+```{r}
+pop<- murders$population
+length(pop)
+class(pop)
+```
+
+```{r}
+mes(murders)
+```
+Use quotes to distinguish between variable names and character strings
+```{r}
+"a" #character string
+```
+```{r}
+class(murders$state)
+```
+Another type of vector: logical vectors
+TRUE or FALSE
+```{r}
+Z<- 3 < 2
+Z
+class(Z)
+```
+One more data type: 
+
+```{r}
+class(murders$region)
+```
+Note: Categorical Data
+
+```{r}
+levels(murders$region)
+```
+Note: Saving categorical data is more memory efficient, in fact, we store the levels as integers.
+IT CAN BE EASILY BE CONFUSED WITH CHARACTERS!
+
+## Practice
+```{r}
+library(dslabs)
+data(movielens)
+str(movielens)
+```
+```{r}
+class(movielens$title)
+```
+```{r}
+class(movielens$genres)
+levels(movielens$genres)
+nlevels(movielens$genres)
+```
+
+

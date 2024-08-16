@@ -1,0 +1,144 @@
+---
+title: "R_learning"
+author: "Nina"
+date: "`r Sys.Date()`"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Intro
+
+This is the a R notebook for the most basic R.
+
+```{r test}
+library("palmerpenguins")
+summary(penguins)
+```
+
+```{r check installed packages, results = "hide"}
+ installed.packages() 
+```
+
+
+```{r}
+install.packages("ggplot2")
+library("ggplot2")
+```
+
+```{r find packages, eval=FALSE}
+ find.package("tidyverse")
+```
+
+```{r, , results = "hide"}
+install.packages("tidyverse")
+```
+
+```{r}
+a<-1 # global environment
+b<-2
+c<-1
+print(a) 
+```
+```{r}
+ls() #a list of variables
+```
+
+```{r}
+(-b + sqrt(b^2 - 2*a*c)) / (2*a)
+```
+如果 \(a^x = N\) (其中 \(a > 0\) 且 \(a \ne 1\))，则 \(x\) 叫做以 \(a\) 为底 \(N\) 的对数，记做 \(x = \log_a N\)。
+
+The logarithm of \(N\) with base \(a\) is:
+$$
+\log_a N
+$$
+```{r}
+?log #or ("log")
+```
+
+
+```{r}
+args(log)
+```
+The base of the function log defaults to base=exp(1), means default base is exp(1).
+```{r}
+
+```
+
+```{r}
+log(8, base=2) # change default base to 2
+```
+```{r}
+log(8,2) 
+```
+
+## Functions
+```{r}
+log(a)
+```
+### nested functions
+```{r}
+log(exp(a)) #nested
+```
+Functions are not the only pre-built objects in R, there are also data sets included for users to practice and test out functions
+```{r}
+data() #these data sets are objects that you can use by simply tying the names
+```
+
+```{r}
+CO2
+```
+
+```{r}
+pi
+```
+## Variable names
+Make your codes readable, have to start with a letter, and they cannot contain spaces. 
+Comments is very nice 
+```{r}
+## code to compute solution to quadratic
+## equation of the form ax^2 + bx + c
+## define the variables
+a<- 2
+b<- -1
+c<- -4
+
+## Now compute the solution
+(-b + sqrt(b^2-4*a*c))/2*a
+```
+
+## Practice
+
+
+```{r}
+a <- 2
+b <- -1
+c <- -4
+
+# Calculate the discriminant
+discriminant <- b^2 - 4 * a * c
+
+# Calculate the two solutions
+x1 <- (-b + sqrt(discriminant)) / (2 * a)
+x2 <- (-b - sqrt(discriminant)) / (2 * a)
+
+# Print the solutions with 3 significant digits
+cat("The solutions are:", signif(x1, 3), "and", signif(x2, 3), "\n")
+```
+
+```{r}
+log(1024, base=4)
+```
+## Create data frame
+```{r}
+temp <- c(35, 88, 42, 84, 81, 30)
+city <- c("Beijing", "Lagos", "Paris", "Rio de Janeiro", "San Juan", "Toronto")
+city_temps <- data.frame(name = city, temperature = temp)
+View(city_temps)
+```
+
+
+

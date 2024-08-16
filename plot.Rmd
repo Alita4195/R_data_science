@@ -1,0 +1,19 @@
+---
+title: "plot"
+output: html_notebook
+---
+Visualization
+```{r}
+plot(murders$population, murders$total)
+```
+It is easier to draw conclusion, there is strong relation between population and murders
+## Histograms
+```{r}
+hist(murders$rate)
+```
+## Box plots
+```{r}
+boxplot(data=murders, rate~region)
+```
+
+
