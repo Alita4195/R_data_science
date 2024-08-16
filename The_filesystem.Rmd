@@ -1,30 +1,17 @@
 ---
-title: "Data_import"
+title: "File_system"
 author: "Nina"
 date: "`r Sys.Date()`"
-output: html_document
+output:
+  pdf_document: default
+  html_document: default
 ---
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
-## example 1
-
-```{r}
-# Copy the spreadsheet containing the US murders data (included as part of the dslabs package) 
-
-filename <- "murders.csv"
-dir<- system.file("extdata", package = "dslabs") #查找名为 "dslabs" 的 R 包，并找到该包下面的extdata，找到后返回路径.
-fullpath <- file.path(dir, filename) 
-file.copy(fullpath, "murders.csv")
-
-# Once the file is copied, import the data with a line of code. Use the read_csv function from the readr package (included in the tidyverse)
-library(tidyverse)
-dat <- read_csv(filename)
-```
-
-## example 2
+## example
 
 ```{r}
 system.file(package = "dslabs")
@@ -36,13 +23,13 @@ list.files(path = dir)
 # Get the full path of your working directory by using the getwd function
 wd <- getwd()
 
-# Obtain a full path without writing out explicitly 
 filename <- "murders.csv"
-dir <- system.file("extdata", package = "dslabs") 
-fullpath <- file.path(dir, filename)
-
+dir<- system.file("extdata", package = "dslabs") #查找名为 "dslabs" 的 R 包，并找到该包下面的extdata，找到后返回路径.
+fullpath <- file.path(dir, filename) 
+file.copy(fullpath, "murders.csv")
 # By exploring the directories in dir we find that the extdata contains the file we want
 dir <- system.file(package = "dslabs") 
 filename %in% list.files(file.path(dir, "extdata"))
 ```
+
 
