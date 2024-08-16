@@ -1775,16 +1775,16 @@ if (a != 0) {
 <!-- rnb-text-begin -->
 <!-- rnb-text-end -->
 <!-- rnb-chunk-begin -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuaW5kIDwtIHdoaWNoLm1pbihtdXJkZXJfcmF0ZSlcbmlmIChtdXJkZXJfcmF0ZVtpbmRdPDAuNSl7XG4gIHByaW50KG11cmRlcl9yYXRlW2luZF0pXG59IGVsc2V7XG4gIHByaW50KFwibm8gc3RhdGUgaGFzIHN1Y2ggYSBsb3cgbXVyZGVyIHJhdGVcIilcbn1cbmBgYCJ9 -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuaW5kIDwtIHdoaWNoLm1pbihtdXJkZXJfcmF0ZSlcbmlmIChtdXJkZXJfcmF0ZVtpbmRdPDAuNSl7XG4gIHByaW50KG11cmRlcnMkc3RhdGVbaW5kXSlcbn0gZWxzZXtcbiAgcHJpbnQoXCJubyBzdGF0ZSBoYXMgc3VjaCBhIGxvdyBtdXJkZXIgcmF0ZVwiKVxufVxuYGBgIn0= -->
 <pre class="r"><code>ind &lt;- which.min(murder_rate)
 if (murder_rate[ind]&lt;0.5){
-  print(murder_rate[ind])
+  print(murders$state[ind])
 } else{
   print(&quot;no state has such a low murder rate&quot;)
 }</code></pre>
 <!-- rnb-source-end -->
-<!-- rnb-output-begin eyJkYXRhIjoiWzFdIDAuMzE5NjIxMVxuIn0= -->
-<pre><code>[1] 0.3196211</code></pre>
+<!-- rnb-output-begin eyJkYXRhIjoiWzFdIFwiVmVybW9udFwiXG4ifQ== -->
+<pre><code>[1] &quot;Vermont&quot;</code></pre>
 <!-- rnb-output-end -->
 <!-- rnb-chunk-end -->
 <!-- rnb-text-begin -->
